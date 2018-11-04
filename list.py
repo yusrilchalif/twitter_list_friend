@@ -1,17 +1,23 @@
-import tweepy
+#using pyhton 2.7
+import time
+import tweepy           
 
 #consumer & access token key
-consumer_key        = 'HIDg3TUD64usi0HCzulWRf8O0'
-consumer_secret_key = 'qj8s3uznzhI8IUJmrbHsoFaV995VmUlWr5o4xgWNKNoKV6wzhh'
-access_token        = '919474569261367297-x46bWTtlMGqTaGpvJ3zbXNhGVI1bs2F'
-access_token_secret = '79QR2p1tNKA2yaW0av1jfv8p78KM4vkA3pjLSKh6x3t5b'
+consumer_key        = ''
+consumer_secret_key = ''
+access_token        = ''
+access_token_secret = ''
 
 #OAuth with keys and tokens
-auth = tweepy.OAuthHandler(HIDg3TUD64usi0HCzulWRf8O0, qj8s3uznzhI8IUJmrbHsoFaV995VmUlWr5o4xgWNKNoKV6wzhh)
-auth.set_access_token(919474569261367297-x46bWTtlMGqTaGpvJ3zbXNhGVI1bs2F, 79QR2p1tNKA2yaW0av1jfv8p78KM4vkA3pjLSKh6x3t5b)
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
+auth.set_access_token(access_token, access_token_secret)
 
 #interface with authentication
+#get followers with user FakhriyRN
 api = tweepy.API(auth)
+ids = []
+for page in tweepy.Cursor(api.followers_ids, screen_name = "FakhriyRN").pages():
+        ids.extend(page)
+        time.sleep(60)
+print ("followers"), len(ids)
 
-#get all followers user
-friends = api.friends_ids()
