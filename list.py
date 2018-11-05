@@ -2,11 +2,12 @@ import time
 import tweepy
 
 #consumer & access token key
-consumer_key        = ''
-consumer_secret_key = ''
-access_token        = ''
-access_token_secret = ''
+consumer_key        = 'HIDg3TUD64usi0HCzulWRf8O0'
+consumer_secret_key = 'qj8s3uznzhI8IUJmrbHsoFaV995VmUlWr5o4xgWNKNoKV6wzhh'
+access_token        = '919474569261367297-x46bWTtlMGqTaGpvJ3zbXNhGVI1bs2F'
+access_token_secret = '79QR2p1tNKA2yaW0av1jfv8p78KM4vkA3pjLSKh6x3t5b'
 
+#variable untuk menyimpan user followers
 akunVar = raw_input("Account name: ")
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
@@ -26,3 +27,5 @@ while True:
     except StopIteration:
         break
     print '@' + user.screen_name
+    #print user.screen_name
+    print user.followers_count
